@@ -13,7 +13,7 @@
           <h2>1. Overall Platform</h2>
             <%= render partial: 'table', locals: {data: @totals, headers: ["Item", "Data"], titles: "Totals"}%>
             <%= render partial: 'table', locals: {data: @last_thirty, headers: ["Item", "Data"], titles: "Last 30 Days"}%>
-            <%= render partial: 'table', locals: {data: @totals, headers: ["Item", "Data"], titles: "Totals"}%>
+            <%= render partial: 'table', locals: {data: @last_seven, headers: ["Item", "Data"], titles: "Last 7 Days"}%>
         </div>
       </div>
     </div>
