@@ -10,6 +10,10 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
+gem 'hirb'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'jazzhands'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -28,6 +32,9 @@ gem 'spring',  '~> 1.3.6',      group: :development
 gem 'pry'
 
 gem 'faker'
+
+gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
