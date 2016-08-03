@@ -16,7 +16,12 @@ class OrderContent < ActiveRecord::Base
     end
 
     def revenue_period(from, to)
-      OrderContent.joins("JOIN products ON product_id = products.id").joins("JOIN orders ON order_id = orders.id").group("orders.id").where("orders.checkout_date": from..to).sum('quantity*price').values.sum
+      OrderContent.joins("JOIN products ON product_id = products.id")
+      .joins("JOIN orders ON order_id = orders.id")
+      .group("orders.id")
+      .where("orders.checkout_date": from..to)
+      .sum('quantity*price').values.sum
+      
     end
   end
 end

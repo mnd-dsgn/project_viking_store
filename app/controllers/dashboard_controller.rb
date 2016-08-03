@@ -42,9 +42,20 @@ class DashboardController < ApplicationController
         name = "#{user.first_name} #{user.last_name}"
         @top_users[name] = user.order_total
       end
+      User.highest_average_order_value.each do |user|
+        name = "#{user.first_name} #{user.last_name}"
+        @top_users[name] = user.order_ave
+      end
     end
-
     top_users
+
+    @total_stats = {
+      "Total Orders": Order.count,
+      "Revenue Generated" : OrderContent.revenue,
+      "Average Order" : Order.find_ave_value
+      "Largest Order Value": Order.find_max_value
+    }
+
 
 
 
