@@ -16,7 +16,10 @@ class State < ActiveRecord::Base
     .joins("JOIN users ON addresses.user_id = users.billing_id")
     .group("states.name")
     .order("no_of_users DESC")
-    .limit(3)   
+    .limit(3)
   end
+
+
+
 
 end
