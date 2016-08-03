@@ -16,7 +16,15 @@ class User < ActiveRecord::Base
   # Field: Most orders placed and the customer who placed it
 
     def high_single_order
-      join_products_orders.order("order_total DESC").limit(1)
+      join_products_orders.order("order_total DESC").group("order_id, users.first_name, users.last_name").limit(1)
+    end
+
+    def highest_lifetime_value
+      join_products_orders.order("order_total DESC").group("users.first_name, users.last_name").limit(1)
+    end
+
+    def highest_average_order_value
+      # 
     end
 
 
@@ -27,7 +35,7 @@ class User < ActiveRecord::Base
       .joins("JOIN orders ON (users.id = orders.user_id)")
       .joins("JOIN order_contents ON (orders.id = order_contents.order_id)")
       .joins("JOIN products ON (products.id = order_contents.product_id)")
-      .group("users.first_name, users.last_name")
+      # .group("users.first_name, users.last_name")
     end
 
 

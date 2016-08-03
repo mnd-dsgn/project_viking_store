@@ -11,9 +11,27 @@
       <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
           <h2>1. Overall Platform</h2>
-            <%= render partial: 'table', locals: {data: @totals, headers: ["Item", "Data"], titles: "Totals"}%>
-            <%= render partial: 'table', locals: {data: @last_thirty, headers: ["Item", "Data"], titles: "Last 30 Days"}%>
-            <%= render partial: 'table', locals: {data: @last_seven, headers: ["Item", "Data"], titles: "Last 7 Days"}%>
+            <%= render partial: 'table', 
+            locals: {
+              data: @totals, 
+              extra_col: nil,
+              headers: ["Item", "Data"], 
+              titles: "Totals"
+              }%>
+            <%= render partial: 'table', 
+            locals: {
+              data: @last_thirty, 
+              extra_col: nil,
+              headers: ["Item", "Data"], 
+              titles: "Last 30 Days"
+              }%>
+            <%= render partial: 'table', 
+            locals: {
+              data: @last_seven, 
+              extra_col: nil,
+              headers: ["Item", "Data"], 
+              titles: "Last 7 Days"
+              }%>
         </div>
       </div>
     </div>
@@ -21,9 +39,24 @@
       <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
           <h2>2. User Demographics and Behavior</h2>
-          <%= render partial: 'table', locals: {data: @top_states, headers: ["Item", "Data"], titles: "Top States"}%>
-          <%= render partial: 'table', locals: {data: @top_cities, headers: ["Item", "Data"], titles: "Top Cities"}%>
-          <%= render partial: 'table', locals: {data: @totals, headers: ["Item", "Data"], titles: "Totals"}%>
+          <%= render partial: 'table', locals: {
+            data: @top_states, 
+            extra_col: nil,
+            headers: ["Item", "Data"], 
+            titles: "Top States"
+            }%>
+          <%= render partial: 'table', locals: {
+            data: @top_cities,
+            extra_col: nil,
+            headers: ["Item", "Data"], 
+            titles: "Top Cities"
+            } %>
+          <%= render partial: 'table', locals: {
+            data: @top_users, 
+            extra_col: ["Highest Single Order Value", "Highest Lifetime Value", "Highest Average Value", "Most Orders Placed"], 
+            headers: ["Item", "User", "Quantity"], 
+            titles: "Top User With..."
+            } %>
         </div>
       </div>
     </div>
@@ -35,9 +68,9 @@
       <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
           <h2>3. Order Statistics</h2>
-          <%= render partial: 'table', locals: {data: @totals, headers: ["Item", "Data"], titles: "Totals"}%>
-          <%= render partial: 'table', locals: {data: @totals, headers: ["Item", "Data"], titles: "Totals"}%>
-          <%= render partial: 'table', locals: {data: @totals, headers: ["Item", "Data"], titles: "Totals"}%>
+          <%= render partial: 'table', locals: {data: @totals, extra_col: nil, headers: ["Item", "Data"], titles: "Totals"}%>
+          <%= render partial: 'table', locals: {data: @totals, extra_col: nil, headers: ["Item", "Data"], titles: "Totals"}%>
+          <%= render partial: 'table', locals: {data: @totals, extra_col: nil, headers: ["Item", "Data"], titles: "Totals"}%>
         </div>
       </div>
     </div>
@@ -45,9 +78,9 @@
       <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
           <h2>4. Time Series Data</h2>
-          <%= render partial: 'table', locals: {data: @totals, headers: ["Item", "Data"], titles: "Totals"}%>
-          <%= render partial: 'table', locals: {data: @totals, headers: ["Item", "Data"], titles: "Totals"}%>
-          <%= render partial: 'table', locals: {data: @totals, headers: ["Item", "Data"], titles: "Totals"}%>
+          <%= render partial: 'table', locals: {data: @totals, extra_col: nil, headers: ["Item", "Data"], titles: "Totals"}%>
+          <%= render partial: 'table', locals: {data: @totals, extra_col: nil, headers: ["Item", "Data"], titles: "Totals"}%>
+          <%= render partial: 'table', locals: {data: @totals, extra_col: nil, headers: ["Item", "Data"], titles: "Totals"}%>
         </div>
       </div>
     </div>

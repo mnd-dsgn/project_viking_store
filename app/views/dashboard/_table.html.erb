@@ -11,8 +11,11 @@
       </tr>
     </thead>
     <tbody>
-      <% data.each do |key, val| %>
+      <% data.each_with_index do |(key, val), idx| %>
       <tr>
+        <% if extra_col %>
+          <td><%= extra_col[idx] %></td>
+        <% end %>    
         <td><%= key %></td>
         <td><%= val %></td>
       </tr>
