@@ -1,31 +1,22 @@
 <!-- Dynamically fill in h3 header, th's, and td's -->
 
 <div class="row">
-  <h3>Last 7 Days</h3>
+  <h3><%= titles %></h3>
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
+        <% headers.each do |h| %>
+        <th><%=h%></th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
+      <% data.each do |key, val| %>
       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+        <td><%= key %></td>
+        <td><%= val %></td>
       </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
+      <% end %>
     </tbody>
   </table>
 </div>
