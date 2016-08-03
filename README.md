@@ -1,3 +1,6 @@
+A project by [Leo](https://github.com/leosaysger/project_viking_store.git). and [Matt](https://github.com/mnd-dsgn/project_viking_store.git).
+
+
 Project: Viking Store Admin
 ========================
 
