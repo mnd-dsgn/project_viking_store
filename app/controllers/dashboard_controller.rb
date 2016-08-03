@@ -5,7 +5,11 @@ class DashboardController < ApplicationController
     @total_products = Product.count
     # all the products from orders that have been placed multiplied by quantity in the order_contents table multiplied by unit price
 
-    @revenue = 
-    Order.joins(:order_contents).joins(:products)
+    @revenue = OrderContent.find_by_sql("SELECT orders.id, SUM(order_contents.quantity)*products.price FROM order_contents JOIN products ON product_id = products.id JOIN orders ON order_id=orders.id
+    GROUP BY orders.id
+    WHERE orders.checkout_date IS NOT NULL")
   end
 end
+
+
+OrderContent.find_by_sql("SELECT * FROM order_contents JOIN products ON product_id = products.id JOIN orders ON order_id=orders.id WHERE orders.checkout_date IS NOT NULL")
