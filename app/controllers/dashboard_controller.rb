@@ -3,13 +3,18 @@ class DashboardController < ApplicationController
     @total_users = User.count
     @total_orders = Order.count
     @total_products = Product.count
-    # all the products from orders that have been placed multiplied by quantity in the order_contents table multiplied by unit price
 
-    @revenue = OrderContent.find_by_sql("SELECT orders.id, SUM(order_contents.quantity)*products.price FROM order_contents JOIN products ON product_id = products.id JOIN orders ON order_id=orders.id
-    GROUP BY orders.id
-    WHERE orders.checkout_date IS NOT NULL")
+    @revenue = OrderContent.find_by_sql("SELECT SUM(order_revenues) AS total_revenue 
+      FROM ( 
+            SELECT o.id,
+            SUM(products.price*order_contents.quantity) AS order_revenues
+            FROM order_contents
+            JOIN products ON product_id = products.id
+            JOIN (SELECT * 
+                  FROM orders 
+                 WHERE checkout_date IS NOT NULL) 
+              AS o ON order_id=o.id
+            GROUP BY o.id) 
+        AS all_orders")
   end
 end
-
-
-OrderContent.find_by_sql("SELECT * FROM order_contents JOIN products ON product_id = products.id JOIN orders ON order_id=orders.id WHERE orders.checkout_date IS NOT NULL")
