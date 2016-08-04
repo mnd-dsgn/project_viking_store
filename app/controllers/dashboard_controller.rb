@@ -49,15 +49,37 @@ class DashboardController < ApplicationController
     end
     top_users
 
+
+
+
+
     @total_stats = {
       "Total Orders": Order.count,
-      "Revenue Generated" : OrderContent.revenue,
-      "Average Order" : Order.find_ave_value
-      "Largest Order Value": Order.find_max_value
+      "Revenue Generated": OrderContent.revenue,
+      "Average Order": Order.find_ave_value,
+      "Largest Order Value": Order.find_max
+    }
+
+    @last_thirty_stats = {
+      "Total Orders": Order.find_all_in(30.days.ago, DateTime.current),
+      "Revenue Generated": OrderContent.revenue_period(30.days.ago, DateTime.current),
+      "Average Order": Order.find_ave_value(30.days.ago, DateTime.current),
+      "Largest Order Value": Order.find_max(30.days.ago, DateTime.current)
+    }
+
+    @last_seven_stats = {
+      "Total Orders": Order.find_all_in(7.days.ago, DateTime.current),
+      "Revenue Generated": OrderContent.revenue_period(7.days.ago, DateTime.current),
+      "Average Order": Order.find_ave_value(7.days.ago, DateTime.current),
+      "Largest Order Value": Order.find_max(7.days.ago, DateTime.current)
     }
 
 
 
+    # panel 4
+
+    @orders_by_day = 
+    orders_by_day[0..6]
 
 
 
